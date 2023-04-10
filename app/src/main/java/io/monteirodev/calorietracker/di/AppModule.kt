@@ -9,6 +9,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.monteirodev.core.data.preferences.DefaultPreferences
 import io.monteirodev.core.domain.preferences.Preferences
+import io.monteirodev.core.domain.use_case.FilterOutDigits
 import javax.inject.Singleton
 
 @Module
@@ -25,5 +26,11 @@ object AppModule {
     @Singleton
     fun providePreferences(sharedPreferences: SharedPreferences): Preferences {
         return DefaultPreferences(sharedPreferences)
+    }
+
+    @Provides
+    @Singleton
+    fun providesFilterOutDigits(): FilterOutDigits {
+        return FilterOutDigits()
     }
 }
