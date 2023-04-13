@@ -20,6 +20,7 @@ import io.monteirodev.onboarding_presentation.age.AgeScreen
 import io.monteirodev.onboarding_presentation.gender.GenderScreen
 import io.monteirodev.onboarding_presentation.goal.GoalScreen
 import io.monteirodev.onboarding_presentation.height.HeightScreen
+import io.monteirodev.onboarding_presentation.nutrient_goal.NutrientGoalScreen
 import io.monteirodev.onboarding_presentation.weight.WeightScreen
 import io.monteirodev.onboarding_presentation.welcome.WelcomeScreen
 
@@ -64,7 +65,10 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.NUTRIENT_GOAL) {
-
+                            NutrientGoalScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.ACTIVITY) {
                             ActivityScreen(onNavigate = navController::navigate)
