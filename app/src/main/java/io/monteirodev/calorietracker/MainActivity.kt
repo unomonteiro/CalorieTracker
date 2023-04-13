@@ -15,8 +15,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.monteirodev.calorietracker.navigation.navigate
 import io.monteirodev.calorietracker.ui.theme.CalorieTrackerTheme
 import io.monteirodev.core.navigation.Route
+import io.monteirodev.onboarding_presentation.activity.ActivityScreen
 import io.monteirodev.onboarding_presentation.age.AgeScreen
 import io.monteirodev.onboarding_presentation.gender.GenderScreen
+import io.monteirodev.onboarding_presentation.goal.GoalScreen
 import io.monteirodev.onboarding_presentation.height.HeightScreen
 import io.monteirodev.onboarding_presentation.weight.WeightScreen
 import io.monteirodev.onboarding_presentation.welcome.WelcomeScreen
@@ -65,10 +67,10 @@ class MainActivity : ComponentActivity() {
 
                         }
                         composable(Route.ACTIVITY) {
-
+                            ActivityScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.GOAL) {
-
+                            GoalScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.TRACKER_OVERVIEW) {
 
