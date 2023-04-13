@@ -17,6 +17,8 @@ import io.monteirodev.calorietracker.ui.theme.CalorieTrackerTheme
 import io.monteirodev.core.navigation.Route
 import io.monteirodev.onboarding_presentation.age.AgeScreen
 import io.monteirodev.onboarding_presentation.gender.GenderScreen
+import io.monteirodev.onboarding_presentation.height.HeightScreen
+import io.monteirodev.onboarding_presentation.weight.WeightScreen
 import io.monteirodev.onboarding_presentation.welcome.WelcomeScreen
 
 @AndroidEntryPoint
@@ -48,10 +50,16 @@ class MainActivity : ComponentActivity() {
                             GenderScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.HEIGHT) {
-
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.WEIGHT) {
-
+                            WeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.NUTRIENT_GOAL) {
 
