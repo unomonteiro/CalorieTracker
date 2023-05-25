@@ -24,7 +24,7 @@ class TrackerOverviewViewModel @Inject constructor(
     private val trackerUseCases: TrackerUseCases
 ): ViewModel() {
 
-    var state by mutableStateOf(TrackOverviewState())
+    var state by mutableStateOf(TrackerOverviewState())
         private set
 
     private val _uiEvent = Channel<UiEvent>()

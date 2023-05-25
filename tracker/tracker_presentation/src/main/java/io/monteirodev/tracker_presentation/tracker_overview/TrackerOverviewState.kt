@@ -3,7 +3,7 @@ package io.monteirodev.tracker_presentation.tracker_overview
 import io.monteirodev.tracker_domain.model.TrackedFood
 import java.time.LocalDate
 
-data class TrackOverviewState(
+data class TrackerOverviewState(
     val totalCarbs: Int = 0,
     val totalProtein: Int = 0,
     val totalFat: Int = 0,

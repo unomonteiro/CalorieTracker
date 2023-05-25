@@ -1,4 +1,4 @@
-package io.monteirodev.calorietracker.ui.theme
+package io.monteirodev.core_ui
 
 import androidx.compose.ui.graphics.Color
 
