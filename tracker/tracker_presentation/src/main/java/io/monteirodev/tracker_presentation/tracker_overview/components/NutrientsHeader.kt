@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -99,21 +100,21 @@ fun NutrientsHeader(
                 goal = state.carbsGoal,
                 name = stringResource(id = R.string.carbs),
                 color = CarbColor,
-                modifier = Modifier.height(90.dp)
+                modifier = Modifier.size(90.dp)
             )
             NutrientBarInfo(
                 value = state.totalProtein,
                 goal = state.proteinGoal,
                 name = stringResource(id = R.string.protein),
                 color = ProteinColor,
-                modifier = Modifier.height(90.dp)
+                modifier = Modifier.size(90.dp)
             )
             NutrientBarInfo(
                 value = state.totalFat,
                 goal = state.fatGoal,
                 name = stringResource(id = R.string.fat),
                 color = FatColor,
-                modifier = Modifier.height(90.dp)
+                modifier = Modifier.size(90.dp)
             )
         }
     }

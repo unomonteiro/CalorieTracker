@@ -35,7 +35,6 @@ fun NutrientBarInfo(
 ) {
     val background = MaterialTheme.colors.background
     val goalExceededColor = MaterialTheme.colors.error
-
     val angleRatio = remember {
         Animatable(0f)
     }
@@ -53,9 +52,10 @@ fun NutrientBarInfo(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        Canvas(modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(1f)
+        Canvas(
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1f)
         ) {
             drawArc(
                 color = if (value <= goal) background else goalExceededColor,

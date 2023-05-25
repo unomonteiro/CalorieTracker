@@ -57,15 +57,15 @@ class TrackerOverviewViewModel @Inject constructor(
                     refreshFoods()
                 }
             }
-            TrackerOverviewEvent.OnNextDayClick -> {
+            is TrackerOverviewEvent.OnNextDayClick -> {
                 state = state.copy(
                     date = state.date.plusDays(1)
                 )
                 refreshFoods()
             }
-            TrackerOverviewEvent.OnPreviousDayClick -> {
+            is TrackerOverviewEvent.OnPreviousDayClick -> {
                 state = state.copy(
-                    date = state.date.plusDays(-1)
+                    date = state.date.minusDays(1)
                 )
                 refreshFoods()
             }
@@ -112,7 +112,7 @@ class TrackerOverviewViewModel @Inject constructor(
                             fat = nutrientsForMeal.fat,
                             calories = nutrientsForMeal.calories
                         )
-                    },
+                    }
                 )
             }
             .launchIn(viewModelScope)
