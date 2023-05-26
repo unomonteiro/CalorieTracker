@@ -25,6 +25,7 @@ import io.monteirodev.core_ui.CarbColor
 import io.monteirodev.core_ui.FatColor
 import io.monteirodev.core_ui.LocalSpacing
 import io.monteirodev.core_ui.ProteinColor
+import io.monteirodev.tracker_presentation.components.NutrientInfo
 import io.monteirodev.tracker_presentation.components.UnitDisplay
 import io.monteirodev.tracker_presentation.tracker_overview.TrackerOverviewState
 

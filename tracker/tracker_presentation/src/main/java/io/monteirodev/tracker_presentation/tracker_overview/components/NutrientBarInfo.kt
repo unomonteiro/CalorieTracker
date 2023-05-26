@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.monteirodev.core.R
+import io.monteirodev.tracker_presentation.components.NutrientInfo
 import io.monteirodev.tracker_presentation.components.UnitDisplay
 
 @Composable
@@ -82,17 +83,17 @@ fun NutrientBarInfo(
                 )
             }
         }
-        Column (
+        Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             UnitDisplay(
                 amount = value,
                 unit = stringResource(id = R.string.grams),
-                amountColor = if (value <= goal) {
+                amountColor = if(value <= goal) {
                     MaterialTheme.colors.onPrimary
                 } else goalExceededColor,
-                unitColor = if (value <= goal) {
+                unitColor = if(value <= goal) {
                     MaterialTheme.colors.onPrimary
                 } else goalExceededColor
             )

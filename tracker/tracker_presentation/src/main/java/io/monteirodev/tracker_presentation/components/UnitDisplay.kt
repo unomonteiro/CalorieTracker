@@ -49,6 +49,6 @@ fun UnitDisplay(
 @Composable
 fun PrevUnitDisplay() {
     Surface {
-        UnitDisplay(amount = 2, unit = "Un.")
+        NutrientInfo("name", amount = 2, unit = "Un.")
     }
 }
