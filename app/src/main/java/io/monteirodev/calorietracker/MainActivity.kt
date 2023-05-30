@@ -18,6 +18,7 @@ import coil.annotation.ExperimentalCoilApi
 import dagger.hilt.android.AndroidEntryPoint
 import io.monteirodev.calorietracker.navigation.navigate
 import io.monteirodev.calorietracker.ui.theme.CalorieTrackerTheme
+import io.monteirodev.core.domain.preferences.Preferences
 import io.monteirodev.core.navigation.Route
 import io.monteirodev.onboarding_presentation.activity.ActivityScreen
 import io.monteirodev.onboarding_presentation.age.AgeScreen
@@ -29,13 +30,20 @@ import io.monteirodev.onboarding_presentation.weight.WeightScreen
 import io.monteirodev.onboarding_presentation.welcome.WelcomeScreen
 import io.monteirodev.tracker_presentation.search.SearchScreen
 import io.monteirodev.tracker_presentation.tracker_overview.TrackerOverviewScreen
+import javax.inject.Inject
 
 @ExperimentalComposeUiApi
 @ExperimentalCoilApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var preferences: Preferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val shouldShowOnboarding = preferences.loadShouldShowOnboarding()
+
         setContent {
             CalorieTrackerTheme {
                 val navController = rememberNavController()
@@ -46,7 +54,11 @@ class MainActivity : ComponentActivity() {
                 ) {it
                     NavHost(
                         navController = navController,
-                        startDestination = Route.WELCOME
+                        startDestination = if (shouldShowOnboarding) {
+                            Route.WELCOME
+                        } else {
+                            Route.TRACKER_OVERVIEW
+                        }
                     ) {
                         composable(Route.WELCOME) {
                             WelcomeScreen(onNavigate = navController::navigate)
