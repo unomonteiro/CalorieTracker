@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -40,7 +41,7 @@ fun ExpandableMeal(
     val spacing = LocalSpacing.current
     val context = LocalContext.current
     Column(
-        modifier = modifier,
+        modifier = modifier
     ) {
         Row(
             modifier = Modifier
@@ -51,7 +52,7 @@ fun ExpandableMeal(
         ) {
             Image(
                 painter = painterResource(id = meal.drawableRes),
-                contentDescription = meal.name.asString(context = context)
+                contentDescription = meal.name.asString(context)
             )
             Spacer(modifier = Modifier.width(spacing.spaceMedium))
             Column(
@@ -65,7 +66,7 @@ fun ExpandableMeal(
                         text = meal.name.asString(context),
                         style = MaterialTheme.typography.h3
                     )
-                    Image(
+                    Icon(
                         imageVector = if (meal.isExpanded) {
                             Icons.Default.KeyboardArrowUp
                         } else {
@@ -110,11 +111,10 @@ fun ExpandableMeal(
                     }
                 }
             }
-            Spacer(modifier = Modifier.height(spacing.spaceMedium))
-            AnimatedVisibility(visible = meal.isExpanded) {
-                content()
-            }
+        }
+        Spacer(modifier = Modifier.height(spacing.spaceMedium))
+        AnimatedVisibility(visible = meal.isExpanded) {
+            content()
         }
     }
-
 }
