@@ -1,4 +1,4 @@
-package io.monteirodev.core.navigation
+package io.monteirodev.calorietracker.navigation
 
 object Route {
     const val WELCOME = "welcome"

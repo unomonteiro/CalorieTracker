@@ -6,10 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.monteirodev.core.domain.model.ActivityLevel
 import io.monteirodev.core.domain.model.GoalType
 import io.monteirodev.core.domain.preferences.Preferences
-import io.monteirodev.core.navigation.Route
 import io.monteirodev.core.util.UiEvent
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -21,7 +19,9 @@ class GoalViewModel @Inject constructor(
     private val preferences: Preferences
 ): ViewModel() {
 
-    var selectedGoal by mutableStateOf<GoalType>(GoalType.KeepWeight)
+    var selectedGoal by mutableStateOf<GoalType>(
+        GoalType.KeepWeight
+    )
         private set
 
     private val _uiEvent = Channel<UiEvent>()
@@ -34,7 +34,7 @@ class GoalViewModel @Inject constructor(
     fun onNextClick() {
         viewModelScope.launch {
             preferences.saveGoalType(selectedGoal)
-            _uiEvent.send(UiEvent.Navigate(Route.NUTRIENT_GOAL))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 }

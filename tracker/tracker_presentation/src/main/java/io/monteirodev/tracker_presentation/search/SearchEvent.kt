@@ -18,5 +18,4 @@ sealed class SearchEvent {
         val date: LocalDate
     ): SearchEvent()
     data class OnSearchFocusChange(val isFocused: Boolean): SearchEvent()
-
 }

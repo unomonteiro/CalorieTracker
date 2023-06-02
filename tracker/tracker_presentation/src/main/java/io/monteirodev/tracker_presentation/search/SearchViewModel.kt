@@ -18,8 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-   private val trackerUseCases: TrackerUseCases,
-   private val filterOutDigits: FilterOutDigits
+    private val trackerUseCases: TrackerUseCases,
+    private val filterOutDigits: FilterOutDigits
 ): ViewModel() {
 
     var state by mutableStateOf(SearchState())
@@ -30,28 +30,38 @@ class SearchViewModel @Inject constructor(
 
     fun onEvent(event: SearchEvent) {
         when(event) {
-            is SearchEvent.OnQueryChange -> state = state.copy(query = event.query)
-            is SearchEvent.OnAmountForFoodChange ->
+            is SearchEvent.OnQueryChange -> {
+                state = state.copy(query = event.query)
+            }
+            is SearchEvent.OnAmountForFoodChange -> {
                 state = state.copy(
                     trackableFood = state.trackableFood.map {
-                        if (it.food == event.food)
+                        if(it.food == event.food) {
                             it.copy(amount = filterOutDigits(event.amount))
-                        else it
+                        } else it
                     }
                 )
-            SearchEvent.OnSearch -> executeSearch()
-            is SearchEvent.OnToggleTrackableFood ->
+            }
+            is SearchEvent.OnSearch -> {
+                executeSearch()
+            }
+            is SearchEvent.OnToggleTrackableFood -> {
                 state = state.copy(
                     trackableFood = state.trackableFood.map {
-                        if (it.food == event.food) it.copy(isExpanded = !it.isExpanded)
-                        else it
+                        if(it.food == event.food) {
+                            it.copy(isExpanded = !it.isExpanded)
+                        } else it
                     }
                 )
-            is SearchEvent.OnSearchFocusChange ->
+            }
+            is SearchEvent.OnSearchFocusChange -> {
                 state = state.copy(
                     isHintVisible = !event.isFocused && state.query.isBlank()
                 )
-            is SearchEvent.OnTrackFoodClick -> trackFood(event)
+            }
+            is SearchEvent.OnTrackFoodClick -> {
+                trackFood(event)
+            }
         }
     }
 

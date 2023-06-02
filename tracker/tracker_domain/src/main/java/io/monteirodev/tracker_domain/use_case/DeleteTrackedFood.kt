@@ -9,7 +9,8 @@ import java.time.LocalDate
 class DeleteTrackedFood(
     private val repository: TrackerRepository
 ) {
+
     suspend operator fun invoke(trackedFood: TrackedFood) {
-        return repository.deleteTrackedFood(trackedFood)
+        repository.deleteTrackedFood(trackedFood)
     }
 }

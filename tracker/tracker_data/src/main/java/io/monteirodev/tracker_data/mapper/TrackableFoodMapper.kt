@@ -2,7 +2,6 @@ package io.monteirodev.tracker_data.mapper
 
 import io.monteirodev.tracker_data.remote.dto.Product
 import io.monteirodev.tracker_domain.model.TrackableFood
-import io.monteirodev.tracker_domain.model.TrackedFood
 import kotlin.math.roundToInt
 
 fun Product.toTrackableFood(): TrackableFood? {

@@ -10,6 +10,7 @@ import kotlin.math.roundToInt
 class TrackFood(
     private val repository: TrackerRepository
 ) {
+
     suspend operator fun invoke(
         food: TrackableFood,
         amount: Int,

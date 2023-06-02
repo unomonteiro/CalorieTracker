@@ -9,10 +9,6 @@ import io.monteirodev.tracker_domain.model.MealType
 import io.monteirodev.tracker_domain.model.TrackedFood
 import kotlin.math.roundToInt
 
-private const val CARB_CALORIES = 4f
-private const val PROTEIN_CALORIES = 4f
-private const val FAT_CALORIES = 9f
-
 class CalculateMealNutrients(
     private val preferences: Preferences
 ) {
@@ -38,9 +34,9 @@ class CalculateMealNutrients(
 
         val userInfo = preferences.loadUserInfo()
         val caloryGoal = dailyCaloryRequirement(userInfo)
-        val carbsGoal = (caloryGoal * userInfo.carbRatio / CARB_CALORIES).roundToInt()
-        val proteinGoal = (caloryGoal * userInfo.proteinRatio / PROTEIN_CALORIES).roundToInt()
-        val fatGoal = (caloryGoal * userInfo.fatRatio / FAT_CALORIES).roundToInt()
+        val carbsGoal = (caloryGoal * userInfo.carbRatio / 4f).roundToInt()
+        val proteinGoal = (caloryGoal * userInfo.proteinRatio / 4f).roundToInt()
+        val fatGoal = (caloryGoal * userInfo.fatRatio / 9f).roundToInt()
 
         return Result(
             carbsGoal = carbsGoal,

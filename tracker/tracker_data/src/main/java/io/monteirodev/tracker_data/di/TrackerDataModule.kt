@@ -8,7 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.monteirodev.tracker_data.local.TrackerDatabase
 import io.monteirodev.tracker_data.remote.OpenFoodApi
-import io.monteirodev.tracker_data.remote.repository.TrackerRepositoryImpl
+import io.monteirodev.tracker_data.repository.TrackerRepositoryImpl
 import io.monteirodev.tracker_domain.repository.TrackerRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

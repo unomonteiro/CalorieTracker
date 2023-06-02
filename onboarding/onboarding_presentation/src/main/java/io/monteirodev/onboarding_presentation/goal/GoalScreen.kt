@@ -12,24 +12,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import io.monteirodev.core.R
-import io.monteirodev.core.domain.model.ActivityLevel
 import io.monteirodev.core.domain.model.GoalType
 import io.monteirodev.core.util.UiEvent
 import io.monteirodev.core_ui.LocalSpacing
 import io.monteirodev.onboarding_presentation.components.ActionButton
 import io.monteirodev.onboarding_presentation.components.SelectableButton
-import kotlinx.coroutines.flow.collect
 
 @Composable
 fun GoalScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: GoalViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when(event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
             }
         }

@@ -38,12 +38,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import io.monteirodev.core_ui.LocalSpacing
 import io.monteirodev.core.R
 import io.monteirodev.tracker_presentation.components.NutrientInfo
 import io.monteirodev.tracker_presentation.search.TrackableFoodUiState
 
+@ExperimentalCoilApi
 @Composable
 fun TrackableFoodItem(
     trackableFoodUiState: TrackableFoodUiState,

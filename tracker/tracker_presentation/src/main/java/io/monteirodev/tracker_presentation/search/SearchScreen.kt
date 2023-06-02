@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.annotation.ExperimentalCoilApi
 import io.monteirodev.core.R
 import io.monteirodev.core.util.UiEvent
 import io.monteirodev.core_ui.LocalSpacing
@@ -31,6 +32,7 @@ import io.monteirodev.tracker_presentation.search.components.SearchTextField
 import io.monteirodev.tracker_presentation.search.components.TrackableFoodItem
 import java.time.LocalDate
 
+@ExperimentalCoilApi
 @ExperimentalComposeUiApi
 @Composable
 fun SearchScreen(
@@ -55,14 +57,14 @@ fun SearchScreen(
                     )
                     keyboardController?.hide()
                 }
-                UiEvent.NavigateUp -> onNavigateUp()
+                is UiEvent.NavigateUp -> onNavigateUp()
                 else -> Unit
             }
         }
     }
     Column(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .padding(spacing.spaceMedium)
     ) {
         Text(
@@ -90,14 +92,12 @@ fun SearchScreen(
                 TrackableFoodItem(
                     trackableFoodUiState = food,
                     onClick = {
-                        viewModel.onEvent(
-                            SearchEvent.OnToggleTrackableFood(food = food.food)
-                        )
+                        viewModel.onEvent(SearchEvent.OnToggleTrackableFood(food.food))
                     },
                     onAmountChange = {
-                        viewModel.onEvent(
-                            SearchEvent.OnAmountForFoodChange(food.food, it)
-                        )
+                        viewModel.onEvent(SearchEvent.OnAmountForFoodChange(
+                            food.food, it
+                        ))
                     },
                     onTrack = {
                         keyboardController?.hide()

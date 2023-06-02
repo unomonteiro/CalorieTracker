@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.monteirodev.core.domain.preferences.Preferences
 import io.monteirodev.core.domain.use_case.FilterOutDigits
-import io.monteirodev.core.navigation.Route
 import io.monteirodev.core.util.UiEvent
 import io.monteirodev.onboarding_domain.use_case.ValidateNutrients
 import kotlinx.coroutines.channels.Channel
@@ -36,17 +35,17 @@ class NutrientGoalViewModel @Inject constructor(
                     carbsRatio = filterOutDigits(event.ratio)
                 )
             }
-            is NutrientGoalEvent.OnFatRatioEnter -> {
+            is NutrientGoalEvent.OnProteinRatioEnter -> {
                 state = state.copy(
                     proteinRatio = filterOutDigits(event.ratio)
                 )
             }
-            is NutrientGoalEvent.OnProteinRatioEnter -> {
+            is NutrientGoalEvent.OnFatRatioEnter -> {
                 state = state.copy(
                     fatRatio = filterOutDigits(event.ratio)
                 )
             }
-            NutrientGoalEvent.OnNextClick -> {
+            is NutrientGoalEvent.OnNextClick -> {
                 val result = validateNutrients(
                     carbsRatioText = state.carbsRatio,
                     proteinRatioText = state.proteinRatio,
@@ -58,7 +57,7 @@ class NutrientGoalViewModel @Inject constructor(
                         preferences.saveProteinRatio(result.proteinRatio)
                         preferences.saveFatRatio(result.fatRatio)
                         viewModelScope.launch {
-                            _uiEvent.send(UiEvent.Navigate(Route.TRACKER_OVERVIEW))
+                            _uiEvent.send(UiEvent.Success)
                         }
                     }
                     is ValidateNutrients.Result.Error -> {

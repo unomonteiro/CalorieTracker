@@ -69,16 +69,11 @@ fun ExpandableMeal(
                     Icon(
                         imageVector = if (meal.isExpanded) {
                             Icons.Default.KeyboardArrowUp
-                        } else {
-                            Icons.Default.KeyboardArrowDown
-                        },
-                        contentDescription = if (meal.isExpanded) {
+                        } else Icons.Default.KeyboardArrowDown,
+                        contentDescription = if(meal.isExpanded) {
                             stringResource(id = R.string.collapse)
-                        } else {
-                            stringResource(id = R.string.extend)
-                        }
+                        } else stringResource(id = R.string.extend)
                     )
-
                 }
                 Spacer(modifier = Modifier.height(spacing.spaceSmall))
                 Row(

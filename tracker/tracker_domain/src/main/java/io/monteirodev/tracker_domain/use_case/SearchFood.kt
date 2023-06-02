@@ -6,6 +6,7 @@ import io.monteirodev.tracker_domain.repository.TrackerRepository
 class SearchFood(
     private val repository: TrackerRepository
 ) {
+
     suspend operator fun invoke(
         query: String,
         page: Int = 1,

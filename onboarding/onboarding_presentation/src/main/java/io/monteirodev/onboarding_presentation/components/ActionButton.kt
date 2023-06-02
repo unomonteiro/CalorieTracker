@@ -15,7 +15,7 @@ import io.monteirodev.core_ui.LocalSpacing
 fun ActionButton(
     text: String,
     onClick: () -> Unit,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     isEnabled: Boolean = true,
     textStyle: TextStyle = MaterialTheme.typography.button
 ) {

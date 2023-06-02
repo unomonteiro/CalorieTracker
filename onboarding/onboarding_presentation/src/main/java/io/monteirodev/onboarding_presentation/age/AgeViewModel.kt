@@ -9,7 +9,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.monteirodev.core.R
 import io.monteirodev.core.domain.preferences.Preferences
 import io.monteirodev.core.domain.use_case.FilterOutDigits
-import io.monteirodev.core.navigation.Route
 import io.monteirodev.core.util.UiEvent
 import io.monteirodev.core.util.UiText
 import kotlinx.coroutines.channels.Channel
@@ -46,7 +45,7 @@ class AgeViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveAge(ageNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.HEIGHT))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 }

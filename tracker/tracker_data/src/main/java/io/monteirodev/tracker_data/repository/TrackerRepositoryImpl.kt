@@ -1,17 +1,15 @@
-package io.monteirodev.tracker_data.remote.repository
+package io.monteirodev.tracker_data.repository
 
 import io.monteirodev.tracker_data.local.TrackerDao
 import io.monteirodev.tracker_data.mapper.toTrackableFood
 import io.monteirodev.tracker_data.mapper.toTrackedFood
 import io.monteirodev.tracker_data.mapper.toTrackedFoodEntity
 import io.monteirodev.tracker_data.remote.OpenFoodApi
-import io.monteirodev.tracker_data.remote.dto.Product
 import io.monteirodev.tracker_domain.model.TrackableFood
 import io.monteirodev.tracker_domain.model.TrackedFood
 import io.monteirodev.tracker_domain.repository.TrackerRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import java.lang.Exception
 import java.time.LocalDate
 
 class TrackerRepositoryImpl(
@@ -30,7 +28,17 @@ class TrackerRepositoryImpl(
                 pageSize = pageSize
             )
             Result.success(
-                searchDto.products.mapNotNull { it.toTrackableFood() }
+                searchDto.products
+                    .filter {
+                        val calculatedCalories =
+                            it.nutriments.carbohydrates100g * 4f +
+                                    it.nutriments.proteins100g * 4f +
+                                    it.nutriments.fat100g * 9f
+                        val lowerBound = calculatedCalories * 0.99f
+                        val upperBound = calculatedCalories * 1.01f
+                        it.nutriments.energyKcal100g in (lowerBound..upperBound)
+                    }
+                    .mapNotNull { it.toTrackableFood() }
             )
         } catch (e: Exception) {
             e.printStackTrace()

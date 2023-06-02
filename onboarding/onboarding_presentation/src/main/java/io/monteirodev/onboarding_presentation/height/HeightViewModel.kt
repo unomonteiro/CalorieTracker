@@ -9,7 +9,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.monteirodev.core.R
 import io.monteirodev.core.domain.preferences.Preferences
 import io.monteirodev.core.domain.use_case.FilterOutDigits
-import io.monteirodev.core.navigation.Route
 import io.monteirodev.core.util.UiEvent
 import io.monteirodev.core.util.UiText
 import kotlinx.coroutines.channels.Channel
@@ -23,7 +22,7 @@ class HeightViewModel @Inject constructor(
     private val filterOutDigits: FilterOutDigits
 ): ViewModel() {
 
-    var height by mutableStateOf("160")
+    var height by mutableStateOf("180")
         private set
 
     private val _uiEvent = Channel<UiEvent>()
@@ -46,7 +45,7 @@ class HeightViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveHeight(heightNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.WEIGHT))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 }

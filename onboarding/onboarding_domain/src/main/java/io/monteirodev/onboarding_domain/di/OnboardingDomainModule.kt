@@ -13,7 +13,7 @@ object OnboardingDomainModule {
 
     @Provides
     @ViewModelScoped
-    fun providesValidateNutrientsUseCase(): ValidateNutrients {
+    fun provideValidateNutrientsUseCase(): ValidateNutrients {
         return ValidateNutrients()
     }
 }
