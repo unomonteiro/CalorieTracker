@@ -1,7 +1,8 @@
 repo_name: unomonteiro/CalorieTracker
 report_id: bacdc363d6021c9e681e45baad593bc4
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-09T11:11:55+00:00'
+timestamp: '2024-01-04T14:52:58+00:00'
 requested_by: unomonteiro
 provider: github
 branch: main
@@ -15,6 +16,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/3750/pCfEzr6L.png
+  detection_source_url: https://github.com/unomonteiro/CalorieTracker
   detection_source: Repo Metadata
 - name: Android SDK
   description: An SDK that provides you the API libraries and developer tools necessary
@@ -25,6 +27,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1010/m8jf0po4imu8t5eemjdd.png
+  detection_source_url: https://github.com/unomonteiro/CalorieTracker/blob/main/app/build.gradle.kts
   detection_source: app/build.gradle.kts
   last_updated_by: Carlos
   last_updated_on: 2023-04-09 10:35:10.000000000 Z
@@ -36,6 +39,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/unomonteiro/CalorieTracker
   detection_source: Repo Metadata
 - name: Gradle
   description: A powerful build system for the JVM
@@ -46,7 +50,8 @@ tools:
   category: Build, Test, Deploy
   sub_category: Java Build Tools
   image_url: https://img.stackshare.io/service/975/gradlephant-social-black-bg.png
-  detection_source: gradlew.bat
+  detection_source_url: https://github.com/unomonteiro/CalorieTracker/blob/main/base-module.gradle
+  detection_source: base-module.gradle
   last_updated_by: Carlos
   last_updated_on: 2023-04-09 10:35:10.000000000 Z
 - name: Android OS
@@ -57,6 +62,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Operating Systems
   image_url: https://img.stackshare.io/service/9586/ZvmtaSXW_400x400.jpg
+  detection_source_url: https://github.com/unomonteiro/CalorieTracker/blob/main/app/build.gradle.kts
   detection_source: app/build.gradle.kts
   last_updated_by: Carlos
   last_updated_on: 2023-04-09 10:35:10.000000000 Z
